@@ -6,6 +6,7 @@ import sun from "../assets/images/icon-sun.svg";
 import { useState } from "react";
 import CustomEditor from "@/components/CustomEditor.tsx";
 import type { ContentEditableEvent } from "react-simple-wysiwyg";
+import BarChart from "@/components/BarChart.tsx";
 
 export const Route = createFileRoute("/")({
   component: App,
@@ -72,15 +73,6 @@ function App() {
         <CustomEditor value={html} onChange={onChange} />
 
         <div className={"flex w-full flex-col gap-x-4 gap-y-4 md:flex-row"}>
-          {/*{backgrounds.map((background) => (*/}
-          {/*  <div*/}
-          {/*    className={`flex h-[clamp(130px,calc(130px+20*((100vw-375px)/393)),150px)] w-[clamp(224px,calc(343px-119*((100vw-375px)/393)),343px)] flex-col justify-center rounded-lg bg-[calc(125%+70*((100vw-375px)/393))] bg-no-repeat px-3 min-[768px]:w-[clamp(224px,calc(224px+95*((100vw-768px)/672)),319px)] min-[768px]:bg-[calc(195%-77*((100vw-768px)/672))] min-[1440px]:bg-[118%] ${background.color} ${background.image}`}*/}
-          {/*  >*/}
-          {/*    <p className={"text-preset-1 text-neutral-900"}>278</p>*/}
-          {/*    <p className={"text-preset-3 pt-[5px] text-neutral-900"}>Total Characters</p>*/}
-          {/*  </div>*/}
-          {/*))}*/}
-
           {backgrounds.map((background) => (
             <div
               className={`flex h-[clamp(130px,calc(130px+20*((100vw-375px)/393)),150px)] w-full flex-col justify-center rounded-lg bg-[calc(125%+70*((100vw-375px)/393))] bg-no-repeat px-3 min-[768px]:bg-[calc(195%-77*((100vw-768px)/672))] min-[1440px]:bg-[118%] ${background.color} ${background.image}`}
@@ -89,6 +81,10 @@ function App() {
               <p className={"text-preset-3 pt-[5px] text-neutral-900"}>Total Characters</p>
             </div>
           ))}
+        </div>
+
+        <div className={"h-[252px]"}>
+          <BarChart editorData={html} />
         </div>
       </main>
     </div>
