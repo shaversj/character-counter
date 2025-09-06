@@ -6,7 +6,7 @@ import sun from "../assets/images/icon-sun.svg";
 import { useState } from "react";
 import CustomEditor from "@/components/CustomEditor.tsx";
 import type { ContentEditableEvent } from "react-simple-wysiwyg";
-import BarChart from "@/components/BarChart.tsx";
+import Chart from "@/components/Chart.tsx";
 
 export const Route = createFileRoute("/")({
   component: App,
@@ -84,7 +84,8 @@ function App() {
         </div>
 
         <div className={"h-[252px]"}>
-          <BarChart editorData={html} />
+          <p className={"text-preset-2 pt-6 text-neutral-900"}>Letter Density</p>
+          <Chart data={html} topK={19} showOthers othersLabel="Others" />
         </div>
       </main>
     </div>
