@@ -1,17 +1,17 @@
 import Editor, { type ContentEditableEvent, Toolbar } from "react-simple-wysiwyg";
 
 type CustomEditorProps = {
-  value: string;
+  data: string;
   onChange: (event: ContentEditableEvent) => void;
 };
 
-export default function CustomEditor({ value, onChange }: CustomEditorProps) {
+export default function CustomEditor({ data, onChange }: CustomEditorProps) {
   return (
     <Editor
       containerProps={{
         style: { marginTop: "48px" },
       }}
-      value={value}
+      value={data}
       onChange={onChange}
     >
       <Toolbar></Toolbar>

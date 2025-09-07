@@ -43,11 +43,13 @@ const RoundedBar = (props: any) => {
 export default function Chart({
   data,
   topK,
+  showMore,
   showOthers = true,
   othersLabel = "Other",
 }: {
   data: string;
   topK?: number;
+  showMore?: boolean;
   showOthers?: boolean;
   othersLabel?: string;
 }) {
@@ -57,8 +59,15 @@ export default function Chart({
     () => aggregateLetters(data ?? "", { topK, showOthers, othersLabel }),
     [data, topK, showOthers, othersLabel],
   );
+
+  function calcHeight(count: number): number {
+    return Math.round(32 + 28.6 * count);
+  }
+
+  if (!rows.length) return null;
+
   return (
-    <ResponsiveContainer width="100%" height={220}>
+    <ResponsiveContainer width={"100%"} height={showMore ? calcHeight(rows.length) : 175}>
       <BarChart data={rows} layout="vertical">
         <XAxis type="number" hide domain={[0, "dataMax"]} />
         <YAxis
@@ -68,7 +77,7 @@ export default function Chart({
           axisLine={false}
           tickLine={false}
           width={28}
-          tickFormatter={(v: string) => v.toUpperCase()}
+          tickFormatter={(v) => String(v).toUpperCase()}
         />
         <YAxis
           yAxisId="right"
