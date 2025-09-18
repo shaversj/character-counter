@@ -2,9 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import CustomEditor from "@/components/CustomEditor.tsx";
 import type { ContentEditableEvent } from "react-simple-wysiwyg";
-import BackgroundCards from "@/components/BackgroundCards.tsx";
 import MainTitle from "@/components/MainTitle.tsx";
-import LetterDensitySection from "@/components/LetterDensitySection.tsx";
+import StatsPanel from "@/components/StatsPanel.tsx";
 import Header from "@/components/Header.tsx";
 
 export const Route = createFileRoute("/")({
@@ -25,8 +24,7 @@ function App() {
       <main>
         <MainTitle />
         <CustomEditor data={data} onChange={handleDataChange} />
-        <BackgroundCards />
-        <LetterDensitySection data={data} />
+        <StatsPanel data={data} />
       </main>
     </div>
   );

@@ -8,6 +8,7 @@ type CustomEditorProps = {
 export default function CustomEditor({ data, onChange }: CustomEditorProps) {
   return (
     <Editor
+      placeholder={"Start typing here… (or paste your text)"}
       containerProps={{
         style: { marginTop: "48px" },
       }}
