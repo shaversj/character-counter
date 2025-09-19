@@ -4,6 +4,7 @@ import BackgroundCards from "@/components/BackgroundCards.tsx";
 import { useMemo, useState } from "react";
 import { aggregateLetters } from "@/util/util.ts";
 import type { LetterAggregateData } from "@/types/types.ts";
+import CheckboxWithLabel from "@/components/CheckboxWithLabel.tsx";
 
 type StatsPanelProps = {
   data: string;
@@ -26,7 +27,13 @@ export default function StatsPanel({ data }: StatsPanelProps) {
 
   return (
     <div>
-      <BackgroundCards data={agData} />
+      <CheckboxWithLabel
+        enabled={excludeSpaces}
+        setEnabled={setExcludeSpaces}
+        label={"Exclude Spaces"}
+      />
+
+      <BackgroundCards data={agData} excludeSpaces={excludeSpaces} />
       <section className={"h-[252px]"}>
         <p className={"text-preset-2 pt-6 text-neutral-900"}>Letter Density</p>
         <Chart data={agData} showMore={showMore} />

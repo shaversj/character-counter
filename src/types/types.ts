@@ -1,7 +1,6 @@
 export type Row = {
-  letter: string;
-  count: number;
-  percentage: number;
+  char: string;
+  value: number;
   pct: number;
 };
 
