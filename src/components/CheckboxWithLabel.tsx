@@ -1,12 +1,21 @@
 import { Checkbox } from "@headlessui/react";
+import * as React from "react";
 
 type CheckboxWithLabelProps = {
   enabled: boolean;
   setEnabled: (enabled: boolean) => void;
   label: string;
+  limit?: number;
+  setLimit?: (limit: number) => void;
 };
 
-export default function CheckboxWithLabel({ enabled, setEnabled, label }: CheckboxWithLabelProps) {
+export default function CheckboxWithLabel({
+  enabled,
+  setEnabled,
+  label,
+  limit,
+  setLimit,
+}: CheckboxWithLabelProps) {
   return (
     <div className={"flex items-center gap-x-2.5 pt-4"}>
       <Checkbox
@@ -23,6 +32,24 @@ export default function CheckboxWithLabel({ enabled, setEnabled, label }: Checkb
         </svg>
       </Checkbox>
       <span className={"text-preset-4 text-neutral-900"}>{label}</span>
+
+      {label === "Set Character Limit" && enabled && limit && setLimit && (
+        <input
+          type="number"
+          min={1}
+          max={10000}
+          defaultValue={limit}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            const value = parseInt(e.target.value, 10);
+            if (!isNaN(value)) {
+              setLimit(value);
+            }
+          }}
+          className={
+            "text-preset-4 w-[60px] rounded border border-neutral-300 bg-white px-3 text-neutral-900 outline-none focus:border-[#d3a0fa] focus:ring-1 focus:ring-[#d3a0fa] dark:bg-neutral-800 dark:text-neutral-100 dark:focus:border-[#d3a0fa] dark:focus:ring-[#d3a0fa] [&::-webkit-inner-spin-button]:appearance-none"
+          }
+        />
+      )}
     </div>
   );
 }

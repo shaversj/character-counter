@@ -12,6 +12,7 @@ export const Route = createFileRoute("/")({
 
 function App() {
   const [data, setData] = useState("");
+  const [charLimitExceeded, setCharLimitExceeded] = useState(false);
 
   function handleDataChange(event: ContentEditableEvent) {
     const cleanedData = event.target.value.replace(/<br>/g, "");
@@ -23,8 +24,12 @@ function App() {
       <Header />
       <main>
         <MainTitle />
-        <CustomEditor data={data} onChange={handleDataChange} />
-        <StatsPanel data={data} />
+        <CustomEditor
+          data={data}
+          onChange={handleDataChange}
+          charLimitExceeded={charLimitExceeded}
+        />
+        <StatsPanel data={data} setCharLimitExceeded={setCharLimitExceeded} />
       </main>
     </div>
   );
