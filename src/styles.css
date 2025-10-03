@@ -104,12 +104,33 @@
   }
 }
 
+.rsw-editor {
+  height: 200px;
+  padding: 20px;
+  background: #F2F2F7;
+}
+
 .rsw-ce {
   @apply font-normal;
   font-size: var(--text-body-lg-size);
   line-height: var(--text-body-lg-leading);
   letter-spacing: var(--text-body-lg-tracking);
-  padding: 20px;
-  color: #374151;
-  background-color: #e4e7eb;
+  color: #111827;
+}
+
+.rsw-ce::before {
+  color: #111827 !important;
+}
+
+.rsw-ce:focus {
+  outline: none !important;
+  box-shadow: none !important;
+
+}
+
+.rsw-toolbar {
+  height: 0;
+  border: none !important;
+  box-shadow: none !important;
+  background: #F2F2F7;
 }
