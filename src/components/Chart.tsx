@@ -12,6 +12,13 @@ const RoundedBar = (props: any) => {
   return <rect x={x} y={y} width={width} height={height} fill={fill} rx={r} ry={r} />;
 };
 
+const RoundedTrack = (props: any) => {
+  const { x, y, width, height } = props;
+  const r = Math.min(height / 2, 1000);
+  const fill = document.documentElement.classList.contains("dark") ? "#232533" : "#f3f4f6";
+  return <rect x={x} y={y} width={width} height={height} rx={r} ry={r} fill={fill} />; // dark
+};
+
 function calcHeight(count: number): number {
   return Math.round(32 + 28.6 * count);
 }
@@ -24,7 +31,7 @@ export default function Chart({ data, showMore }: ChartProps) {
   return (
     <ResponsiveContainer width={"100%"} height={showMore ? calcHeight(data.rows.length) : 175}>
       <BarChart data={data.rows} layout="vertical">
-        <XAxis type="number" hide domain={[0, "dataMax"]} />
+        <XAxis type="number" hide domain={[0, "dataMax"]}></XAxis>
         <YAxis
           yAxisId="letters"
           dataKey="char"
@@ -33,6 +40,9 @@ export default function Chart({ data, showMore }: ChartProps) {
           tickLine={false}
           width={28}
           tickFormatter={(v) => String(v).toUpperCase()}
+          style={{
+            fill: document.documentElement.classList.contains("dark") ? "#e4e7eb" : "#111827",
+          }}
         />
         <YAxis
           yAxisId="right"
@@ -45,13 +55,16 @@ export default function Chart({ data, showMore }: ChartProps) {
           tickFormatter={(v: number, i: number) =>
             `${v.toLocaleString()} (${data.rows[i] ? data.rows[i].pct.toFixed(2) : "0.00"}%)`
           }
+          style={{
+            fill: document.documentElement.classList.contains("dark") ? "#e4e7eb" : "#111827",
+          }}
         />
         <Bar
           yAxisId="right"
           dataKey="value"
           minPointSize={2}
           fill="#d39ffa"
-          background={RoundedBar}
+          background={RoundedTrack}
           shape={RoundedBar}
         />
       </BarChart>

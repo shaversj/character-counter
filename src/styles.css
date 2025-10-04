@@ -1,7 +1,5 @@
-/* styles.css — Tailwind v4 theme + presets */
 @import "tailwindcss";
 
-/* Optional: load DM Sans */
 @font-face {
   font-family: "DM Sans";
   src: url("./assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf") format("woff2");
@@ -11,27 +9,23 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Fonts */
   --font-sans: "DM Sans", "sans-serif";
 
-  /* Brand & palette (adjust hex to your Figma swatches) */
-  --color-main-purple: #635FC7;         /* your code previously used bg-main-purple */
-  --color-neutral-900: #111827;         /* Neutral 900 */
-  --color-neutral-800: #1F2937;         /* Neutral 800 */
-  --color-neutral-700: #374151;         /* Neutral 700 */
-  --color-neutral-600: #4B5563;         /* Neutral 600 */
-  --color-neutral-200: #e4e7eb;         /* matches your border tone */
-  --color-neutral-100: #f4f7fd;         /* matches your card background */
-  --color-neutral-0:   #ffffff;         /* Neutral 0 */
+  --color-main-purple: #635FC7;
+  --color-neutral-900: #111827;
+  --color-neutral-800: #1F2937;
+  --color-neutral-700: #374151;
+  --color-neutral-600: #4B5563;
+  --color-neutral-200: #e4e7eb;
+  --color-neutral-100: #f4f7fd;
+  --color-neutral-0:   #ffffff;
 
-  /* Accent families shown in the guide (tune to your exact HEX) */
   --color-purple-400: #A8A4FF;
   --color-purple-500: #7C6BFF;
   --color-yellow-500: #FFB700;
   --color-orange-500: #FF6A3D;
   --color-orange-800: #D6451D;
 
-  /* Radii (used by rounded-sm/md/lg/xl/2xl) */
   --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 8px;
@@ -39,16 +33,15 @@
   --radius-xl: 16px;
   --radius-2xl: 24px;
 
-  /* Typography presets (sizes/leading/tracking from your style sheet) */
   --text-hero-size: 64px;
   --text-hero-leading: 100%;
   --text-hero-tracking: -1px;
 
-  --text-hero-mobile-size: 40px;        /* mobile variant of preset 1 */
+  --text-hero-mobile-size: 40px;
 
   --text-h2-size: 24px;
   --text-h2-leading: 140%;
-  --text-h2-weight: 600;                 /* Semibold */
+  --text-h2-weight: 600;
   --text-h2-tracking: 0px;
 
   --text-body-lg-size: 20px;
@@ -60,7 +53,6 @@
   --text-body-md-tracking: -0.6px;
 }
 
-/* Base defaults */
 @layer base {
   :root { font-family: var(--font-sans); }
   body  { @apply text-neutral-800 bg-neutral-0; }
@@ -104,10 +96,18 @@
   }
 }
 
+.dark {
+  html, body { background-color: #111827; }
+}
+
 .rsw-editor {
   height: 200px;
   padding: 20px;
   background: #F2F2F7;
+}
+
+.dark .rsw-editor {
+  background: #2a2b37;
 }
 
 .rsw-ce {
@@ -118,8 +118,15 @@
   color: #111827;
 }
 
+.dark .rsw-ce {
+  color: #e4e4ef;
+}
+
 .rsw-ce::before {
   color: #111827 !important;
+}
+.dark .rsw-ce::before {
+  color: #e4e4ef !important;
 }
 
 .rsw-ce:focus {

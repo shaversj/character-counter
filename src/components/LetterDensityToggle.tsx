@@ -1,5 +1,5 @@
-import ChevronUp from "@/components/ChevronUp.tsx";
-import ChevronDown from "@/components/ChevronDown.tsx";
+import ChevronUpIcon from "@/components/ChevronUpIcon.tsx";
+import ChevronDownIcon from "@/components/ChevronDownIcon.tsx";
 import type { LetterAggregateData } from "@/types/types.ts";
 
 type LetterDensityToggleProps = {
@@ -15,7 +15,7 @@ export default function LetterDensityToggle({
 }: LetterDensityToggleProps) {
   if (data.rows.length === 0) {
     return (
-      <p className={"text-preset-4 pt-5 text-neutral-600"}>
+      <p className={"text-preset-4 pt-5 text-neutral-600 dark:text-neutral-200"}>
         No characters found. Start typing to see letter density.
       </p>
     );
@@ -23,16 +23,18 @@ export default function LetterDensityToggle({
 
   return (
     <button
-      className={"flex cursor-pointer items-center gap-x-2"}
+      className={
+        "text-preset-3 flex cursor-pointer items-center gap-x-2 text-neutral-900 dark:text-neutral-200"
+      }
       onClick={() => setShowMore(!showMore)}
     >
       {showMore ? (
         <>
-          See less <ChevronUp />
+          See less <ChevronUpIcon />
         </>
       ) : (
         <>
-          See more <ChevronDown />
+          See more <ChevronDownIcon />
         </>
       )}
     </button>

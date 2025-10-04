@@ -3,6 +3,7 @@ import lightLogo from "../assets/images/logo-light-theme.svg";
 import moon from "../assets/images/icon-moon.svg";
 import sun from "../assets/images/icon-sun.svg";
 import { useState } from "react";
+import clsx from "clsx";
 
 export default function Header() {
   const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(false);
@@ -18,9 +19,17 @@ export default function Header() {
       <img src={isDarkModeEnabled ? darkLogo : lightLogo} className="h-[30px] md:h-10" alt="logo" />
       <button
         onClick={toggleDarkMode}
-        className={
-          "ml-auto grid size-[32px] place-items-center rounded-sm bg-neutral-100 md:size-[44px] md:rounded-md dark:bg-neutral-700"
-        }
+        className={clsx(
+          "ml-auto",
+          "grid",
+          "size-[32px]",
+          "place-items-center",
+          "rounded-sm",
+          "bg-neutral-100",
+          "md:size-[44px]",
+          "md:rounded-md",
+          "dark:bg-neutral-700",
+        )}
       >
         <img src={isDarkModeEnabled ? sun : moon} alt="Dark Mode Toggle" className={""} />
       </button>

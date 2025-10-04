@@ -1,4 +1,5 @@
 import type { LetterAggregateData } from "@/types/types.ts";
+import clsx from "clsx";
 
 const backgrounds = [
   {
@@ -37,7 +38,21 @@ export default function BackgroundCards({ data, excludeSpaces }: BackgroundCards
       {backgrounds.map((background, idx) => (
         <div
           key={idx}
-          className={`flex h-[clamp(130px,calc(130px+20*((100vw-375px)/393)),150px)] w-full flex-col justify-center rounded-lg bg-[calc(125%+70*((100vw-375px)/393))] bg-no-repeat px-3 min-[768px]:bg-[calc(195%-77*((100vw-768px)/672))] min-[1440px]:bg-[118%] ${background.color} ${background.image}`}
+          className={clsx(
+            "flex",
+            "h-[clamp(130px,calc(130px+20*((100vw-375px)/393)),150px)]",
+            "w-full",
+            "flex-col",
+            "justify-center",
+            "rounded-lg",
+            "bg-[calc(125%+70*((100vw-375px)/393))]",
+            "bg-no-repeat",
+            "px-3",
+            "min-[768px]:bg-[calc(195%-77*((100vw-768px)/672))]",
+            "min-[1440px]:bg-[118%]",
+            background.color,
+            background.image,
+          )}
         >
           <p className={"text-preset-1 text-neutral-900"}>{countsList[idx]}</p>
           <p className={"text-preset-3 pt-[5px] text-neutral-900"}>
