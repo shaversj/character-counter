@@ -1,12 +1,13 @@
-import type { LetterAggregateData } from "@/types/types.ts";
 import clsx from "clsx";
+
+import type { LetterAggregateData } from "@/types/types.ts";
 
 const backgrounds = [
   {
+    altText: " (no spaces)",
     color: "bg-[#d3a0fa]",
     image: "bg-[url('./assets/images/pattern-character-count.svg')]",
     text: "Total Characters",
-    altText: " (no spaces)",
   },
   {
     color: "bg-[#ff9f01]",
@@ -30,14 +31,13 @@ export default function BackgroundCards({ data, excludeSpaces }: BackgroundCards
     return null;
   }
 
-  const { totalCount, wordCount, sentenceCount } = data;
+  const { sentenceCount, totalCount, wordCount } = data;
   const countsList = [totalCount, wordCount, sentenceCount];
 
   return (
     <div className={"flex w-full flex-col gap-x-4 gap-y-4 pt-12 md:flex-row"}>
       {backgrounds.map((background, idx) => (
         <div
-          key={idx}
           className={clsx(
             "flex",
             "h-[clamp(130px,calc(130px+20*((100vw-375px)/393)),150px)]",
@@ -53,6 +53,7 @@ export default function BackgroundCards({ data, excludeSpaces }: BackgroundCards
             background.color,
             background.image,
           )}
+          key={idx}
         >
           <p className={"text-preset-1 text-neutral-900"}>{countsList[idx]}</p>
           <p className={"text-preset-3 pt-[5px] text-neutral-900"}>

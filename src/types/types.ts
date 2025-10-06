@@ -1,12 +1,12 @@
-export type Row = {
-  char: string;
-  value: number;
-  pct: number;
-};
-
 export type LetterAggregateData = {
   rows: Row[];
+  sentenceCount: number;
   totalCount: number;
   wordCount: number;
-  sentenceCount: number;
+};
+
+export type Row = {
+  char: string;
+  pct: number;
+  value: number;
 };

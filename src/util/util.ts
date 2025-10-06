@@ -3,13 +3,13 @@ import type { Row } from "@/types/types.ts";
 export function aggregateLetters(
   input: string,
   opts: {
-    topK: number;
-    showOthers: boolean;
-    othersLabel: string;
     excludeSpaces: boolean;
+    othersLabel: string;
+    showOthers: boolean;
+    topK: number;
   },
-): { rows: Row[]; totalCount: number; wordCount: number; sentenceCount: number } {
-  const { topK, showOthers, othersLabel, excludeSpaces } = opts;
+): { rows: Row[]; sentenceCount: number; totalCount: number; wordCount: number; } {
+  const { excludeSpaces, othersLabel, showOthers, topK } = opts;
 
   const wordCount = input.trim().length > 0 ? input.trim().split(/\s+/).length : 0;
   const sentenceCount = input.split(/[.!?]+/).filter(Boolean).length;
@@ -28,8 +28,8 @@ export function aggregateLetters(
   let rows: Row[] = Object.entries(counts)
     .map(([char, value]) => ({
       char,
-      value,
       pct: totalCount ? (value / totalCount) * 100 : 0,
+      value,
     }))
     .sort((a, b) => b.value - a.value || a.char.localeCompare(b.char));
 
@@ -40,13 +40,13 @@ export function aggregateLetters(
       if (restSum > 0) {
         head.push({
           char: othersLabel,
-          value: restSum,
           pct: totalCount ? (restSum / totalCount) * 100 : 0,
+          value: restSum,
         });
       }
     }
     rows = head;
   }
 
-  return { rows, totalCount, wordCount, sentenceCount };
+  return { rows, sentenceCount, totalCount, wordCount };
 }

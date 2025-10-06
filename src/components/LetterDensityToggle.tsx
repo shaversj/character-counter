@@ -1,17 +1,18 @@
-import ChevronUpIcon from "@/components/ChevronUpIcon.tsx";
-import ChevronDownIcon from "@/components/ChevronDownIcon.tsx";
 import type { LetterAggregateData } from "@/types/types.ts";
+
+import ChevronDownIcon from "@/components/ChevronDownIcon.tsx";
+import ChevronUpIcon from "@/components/ChevronUpIcon.tsx";
 
 type LetterDensityToggleProps = {
   data: LetterAggregateData;
-  showMore: boolean;
   setShowMore: (showMore: boolean) => void;
+  showMore: boolean;
 };
 
 export default function LetterDensityToggle({
   data,
-  showMore,
   setShowMore,
+  showMore,
 }: LetterDensityToggleProps) {
   if (data.rows.length === 0) {
     return (

@@ -1,15 +1,17 @@
-import Chart from "@/components/Chart.tsx";
-import LetterDensityToggle from "@/components/LetterDensityToggle.tsx";
-import BackgroundCards from "@/components/BackgroundCards.tsx";
 import { useMemo, useState } from "react";
-import { aggregateLetters } from "@/util/util.ts";
+
 import type { LetterAggregateData } from "@/types/types.ts";
-import CheckboxWithLabel from "@/components/CheckboxWithLabel.tsx";
+
+import BackgroundCards from "@/components/BackgroundCards.tsx";
 import CharLimitWarningIcon from "@/components/CharLimitWarningIcon.tsx";
+import Chart from "@/components/Chart.tsx";
+import CheckboxWithLabel from "@/components/CheckboxWithLabel.tsx";
+import LetterDensityToggle from "@/components/LetterDensityToggle.tsx";
+import { aggregateLetters } from "@/util/util.ts";
 
 type StatsPanelProps = {
-  data: string;
   charLimitExceeded?: boolean;
+  data: string;
   setCharLimitExceeded?: (exceeded: boolean) => void;
 };
 
@@ -22,10 +24,10 @@ export default function StatsPanel({ data, setCharLimitExceeded }: StatsPanelPro
   const agData: LetterAggregateData = useMemo(
     () =>
       aggregateLetters(data, {
-        topK: showMore ? 26 : 5,
-        showOthers: showMore,
-        othersLabel: "Others",
         excludeSpaces,
+        othersLabel: "Others",
+        showOthers: showMore,
+        topK: showMore ? 26 : 5,
       }),
     [data, showMore, excludeSpaces],
   );
@@ -48,15 +50,15 @@ export default function StatsPanel({ data, setCharLimitExceeded }: StatsPanelPro
       <div className={"flex gap-x-6"}>
         <CheckboxWithLabel
           enabled={excludeSpaces}
-          setEnabled={setExcludeSpaces}
           label={"Exclude Spaces"}
+          setEnabled={setExcludeSpaces}
         />
         <CheckboxWithLabel
           enabled={hasCharLimit}
-          setEnabled={setHasCharLimit}
-          limit={charLimit}
-          setLimit={setCharLimit}
           label={"Set Character Limit"}
+          limit={charLimit}
+          setEnabled={setHasCharLimit}
+          setLimit={setCharLimit}
         />
       </div>
 
@@ -66,7 +68,7 @@ export default function StatsPanel({ data, setCharLimitExceeded }: StatsPanelPro
           Letter Density
         </p>
         <Chart data={agData} showMore={showMore} />
-        <LetterDensityToggle data={agData} showMore={showMore} setShowMore={setShowMore} />
+        <LetterDensityToggle data={agData} setShowMore={setShowMore} showMore={showMore} />
       </section>
     </div>
   );

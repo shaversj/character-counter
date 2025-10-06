@@ -1,11 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import CustomEditor from "@/components/CustomEditor.tsx";
 import type { ContentEditableEvent } from "react-simple-wysiwyg";
+
+import { createFileRoute } from "@tanstack/react-router";
+import clsx from "clsx";
+import { useState } from "react";
+
+import CustomEditor from "@/components/CustomEditor.tsx";
+import Header from "@/components/Header.tsx";
 import MainTitle from "@/components/MainTitle.tsx";
 import StatsPanel from "@/components/StatsPanel.tsx";
-import Header from "@/components/Header.tsx";
-import clsx from "clsx";
 
 export const Route = createFileRoute("/")({
   component: App,
@@ -36,9 +38,9 @@ function App() {
       <main>
         <MainTitle />
         <CustomEditor
+          charLimitExceeded={charLimitExceeded}
           data={data}
           onChange={handleDataChange}
-          charLimitExceeded={charLimitExceeded}
         />
         <StatsPanel data={data} setCharLimitExceeded={setCharLimitExceeded} />
       </main>
