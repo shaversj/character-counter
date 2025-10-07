@@ -15,17 +15,14 @@ type RoundedProps = {
   y: number;
 };
 
-const RoundedBar = ({ fill, height, width, x, y }: RoundedProps) => {
+const RoundedBar = (props: object) => {
+  const { fill, height, width, x, y } = props as RoundedProps;
   const r = Math.min(height / 2, 1000);
   return <rect fill={fill} height={height} rx={r} ry={r} width={width} x={x} y={y} />;
 };
 
-const RoundedBar = ({ fill, height, width, x, y }: RoundedProps) => {
-  const r = Math.min(height / 2, 1000);
-  return <rect fill={fill} height={height} rx={r} ry={r} width={width} x={x} y={y} />;
-};
-
-const RoundedTrack = ({ height, width, x, y }: RoundedProps) => {
+const RoundedTrack = (props: object) => {
+  const { height, width, x, y } = props as RoundedProps;
   const r = Math.min(height / 2, 1000);
   const newFill = document.documentElement.classList.contains("dark") ? "#232533" : "#f3f4f6";
   return <rect fill={newFill} height={height} rx={r} ry={r} width={width} x={x} y={y} />;
