@@ -27,11 +27,16 @@ type BackgroundCardsProps = {
 };
 
 export default function BackgroundCards({ data, excludeSpaces }: BackgroundCardsProps) {
-  if (!data.rows || data.rows.length === 0) {
-    return null;
-  }
+  // if (!data.rows || data.rows.length === 0) {
+  //   return null;
+  // }
 
-  const { sentenceCount, totalCount, wordCount } = data;
+  const {
+    sentenceCount = 0,
+    totalCount = 0,
+    wordCount = 0,
+  } = !data.rows || data.rows.length === 0 ? {} : data;
+
   const countsList = [totalCount, wordCount, sentenceCount];
 
   return (
@@ -55,7 +60,9 @@ export default function BackgroundCards({ data, excludeSpaces }: BackgroundCards
           )}
           key={idx}
         >
-          <p className={"text-preset-1 text-neutral-900"}>{countsList[idx]}</p>
+          <p className={"text-preset-1 text-neutral-900"}>
+            {String(countsList[idx]).padStart(2, "0")}
+          </p>
           <p className={"text-preset-3 pt-[5px] text-neutral-900"}>
             {background.text}
             <span className={"text-preset-4 text-neutral-900"}>
