@@ -7,17 +7,28 @@ type ChartProps = {
   showMore: boolean;
 };
 
-const RoundedBar = (props: any) => {
-  const { fill, height, width, x, y } = props;
+type RoundedProps = {
+  fill?: string;
+  height: number;
+  width: number;
+  x: number;
+  y: number;
+};
+
+const RoundedBar = ({ fill, height, width, x, y }: RoundedProps) => {
   const r = Math.min(height / 2, 1000);
   return <rect fill={fill} height={height} rx={r} ry={r} width={width} x={x} y={y} />;
 };
 
-const RoundedTrack = (props: any) => {
-  const { height, width, x, y } = props;
+const RoundedBar = ({ fill, height, width, x, y }: RoundedProps) => {
   const r = Math.min(height / 2, 1000);
-  const fill = document.documentElement.classList.contains("dark") ? "#232533" : "#f3f4f6";
-  return <rect fill={fill} height={height} rx={r} ry={r} width={width} x={x} y={y} />; // dark
+  return <rect fill={fill} height={height} rx={r} ry={r} width={width} x={x} y={y} />;
+};
+
+const RoundedTrack = ({ height, width, x, y }: RoundedProps) => {
+  const r = Math.min(height / 2, 1000);
+  const newFill = document.documentElement.classList.contains("dark") ? "#232533" : "#f3f4f6";
+  return <rect fill={newFill} height={height} rx={r} ry={r} width={width} x={x} y={y} />;
 };
 
 export default function Chart({ data, showMore }: ChartProps) {

@@ -6,7 +6,6 @@ import perfectionist from "eslint-plugin-perfectionist";
 export default [
   ...pluginRouter.configs["flat/recommended"],
   perfectionist.configs["recommended-natural"],
-  // Any other config...
   {
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
@@ -22,9 +21,18 @@ export default [
     },
     rules: {
       ...tseslint.configs.recommended.rules,
-      "@typescript-eslint/no-explicit-any": "off",
-      // Your overrides here:
-      "@typescript-eslint/no-unused-vars": ["warn"],
+      "@typescript-eslint/only-throw-error": [
+        "error",
+        {
+          allow: [
+            {
+              from: "package",
+              name: "Redirect",
+              package: "@tanstack/router-core",
+            },
+          ],
+        },
+      ],
     },
   },
 ];
