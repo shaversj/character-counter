@@ -27,10 +27,6 @@ type BackgroundCardsProps = {
 };
 
 export default function BackgroundCards({ data, excludeSpaces }: BackgroundCardsProps) {
-  // if (!data.rows || data.rows.length === 0) {
-  //   return null;
-  // }
-
   const {
     sentenceCount = 0,
     totalCount = 0,
