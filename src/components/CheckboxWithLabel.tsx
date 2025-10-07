@@ -20,6 +20,7 @@ export default function CheckboxWithLabel({
   return (
     <div className={"flex items-center gap-x-2.5 pt-4"}>
       <Checkbox
+        aria-label={label}
         checked={enabled}
         className={clsx(
           "group",
