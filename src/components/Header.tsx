@@ -7,7 +7,7 @@ import darkLogo from "../assets/images/logo-dark-theme.svg";
 import lightLogo from "../assets/images/logo-light-theme.svg";
 
 export default function Header() {
-  const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(false);
+  const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(true);
 
   const toggleDarkMode = () => {
     document.documentElement.classList.toggle("dark");
