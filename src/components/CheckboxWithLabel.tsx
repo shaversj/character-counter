@@ -1,4 +1,4 @@
-import { Checkbox } from "@headlessui/react";
+import { Checkbox, Label, Field } from "@headlessui/react";
 import clsx from "clsx";
 import * as React from "react";
 
@@ -18,7 +18,7 @@ export default function CheckboxWithLabel({
   setLimit,
 }: CheckboxWithLabelProps) {
   return (
-    <div className={"flex items-center gap-x-2.5 pt-4"}>
+    <Field className={"flex items-center gap-x-2.5 pt-4"}>
       <Checkbox
         aria-label={label}
         checked={enabled}
@@ -44,8 +44,7 @@ export default function CheckboxWithLabel({
           <path d="M3 8L6 11L11 3.5" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
         </svg>
       </Checkbox>
-      <span className={"text-preset-4 text-neutral-900 dark:text-neutral-200"}>{label}</span>
-
+      <Label className={"text-preset-4 text-neutral-900 dark:text-neutral-200"}>{label}</Label>
       {label === "Set Character Limit" && enabled && limit && setLimit && (
         <input
           aria-label="Character Limit"
@@ -54,6 +53,7 @@ export default function CheckboxWithLabel({
             "w-[60px]",
             "rounded",
             "border",
+            "h-5",
             "border-neutral-300",
             "bg-white",
             "px-3",
@@ -80,6 +80,6 @@ export default function CheckboxWithLabel({
           type="number"
         />
       )}
-    </div>
+    </Field>
   );
 }
