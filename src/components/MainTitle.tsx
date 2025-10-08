@@ -6,7 +6,7 @@ export default function MainTitle() {
       <h1
         className={clsx(
           "text-preset-1",
-          "w-[clamp(343px,calc(343px+167*((100vw-375px)/393)),510px)]",
+          "w-[clamp(343px,calc(343px+167*((100vw-375px)/393)),515px)]",
           "text-center",
           "text-[#12131A]",
           "min-[768px]:w-[510px]",
